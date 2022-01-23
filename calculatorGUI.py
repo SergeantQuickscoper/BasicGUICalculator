@@ -9,7 +9,10 @@ def buttonAddNo(number):
     entryField.insert(0, str(current) + str(number))
     return
 
-entryField = tkinter.Entry(root, width=20, borderwidth = 3)
+def buttonSum():
+    return
+
+entryField = tkinter.Entry(root, width=23, borderwidth = 3)
 button1 = tkinter.Button(root, text="1", padx = 20, pady = 5, command=lambda: buttonAddNo(1))
 button2 = tkinter.Button(root, text="2", padx = 20, pady = 5, command=lambda: buttonAddNo(2))
 button3 = tkinter.Button(root, text="3", padx = 20, pady = 5, command=lambda: buttonAddNo(3))
@@ -20,8 +23,11 @@ button7 = tkinter.Button(root, text="7", padx = 20, pady = 5, command=lambda: bu
 button8 = tkinter.Button(root, text="8", padx = 20, pady = 5, command=lambda: buttonAddNo(8))
 button9 = tkinter.Button(root, text="9", padx = 20, pady = 5, command=lambda: buttonAddNo(9))
 button0 = tkinter.Button(root, text="0", padx = 51, pady = 5, command=lambda: buttonAddNo(0))
+buttonDot = tkinter.Button(root, text=".", padx = 20, pady = 5, command=lambda: buttonAddNo("."))
+buttonAdd = tkinter.Button(root, text="+", padx = 15, pady= 23, command=lambda: buttonSum)
+buttonEquals = tkinter.Button(root, text="=", padx = 15, pady= 23, command=lambda: buttonSum)
 
-entryField.grid(row=0, column=0, columnspan=3, ipady = 10)
+entryField.grid(row=0, column=0, columnspan=4, ipady = 15)
 
 button1.grid(row=3, column=0)
 button2.grid(row=3, column=1)
@@ -35,6 +41,9 @@ button7.grid(row=1, column=0)
 button8.grid(row=1, column=1)
 button9.grid(row=1, column=2)
 
+buttonDot.grid(row = 4, column = 2)
 button0.grid(row=4, column=0, columnspan = 2)
 
+buttonAdd.grid(row=1, column=3, rowspan=2)
+buttonEquals.grid(row = 3, column=3, rowspan=2)
 root.mainloop()
