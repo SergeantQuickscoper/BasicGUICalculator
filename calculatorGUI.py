@@ -10,8 +10,63 @@ def buttonAddNo(number):
     return
 
 def buttonSum():
+    global firstNumber
+    global currentOperation
+    firstNumber = float(entryField.get())
+    currentOperation = "+"
+    entryField.delete(0, tkinter.END)
     return
 
+def buttonQuotient():
+    global firstNumber
+    global currentOperation
+    firstNumber = float(entryField.get())
+    currentOperation = "/"
+    entryField.delete(0, tkinter.END)
+    return
+
+def buttonDifference():
+    global firstNumber
+    global currentOperation
+    firstNumber = float(entryField.get())
+    currentOperation = "-"
+    entryField.delete(0, tkinter.END)
+    return
+
+def buttonProduct():
+    global firstNumber
+    global currentOperation
+    firstNumber = float(entryField.get())
+    currentOperation = "*"
+    entryField.delete(0, tkinter.END)
+    return
+
+
+def buttonCalculate():
+    if not firstNumber or len(entryField.get()) == 0:
+        entryField.delete(0, tkinter.END)
+        entryField.insert(0, "Error")
+        return
+        
+    finalNumber = float(entryField.get())
+    entryField.delete(0, tkinter.END)
+
+    
+    if currentOperation == "+":
+        entryField.insert(0, firstNumber + finalNumber)
+    elif currentOperation == "-":
+        entryField.insert(0, firstNumber - finalNumber)
+    elif currentOperation == "*":
+        entryField.insert(0, firstNumber * finalNumber)
+    elif currentOperation == "/":
+        entryField.insert(0, firstNumber / finalNumber)
+    return
+
+def buttonClear():
+    entryField.delete(0, tkinter.END)
+
+firstNumber = 0
+currentOperation = ""
 entryField = tkinter.Entry(root, width=23, borderwidth = 3)
 button1 = tkinter.Button(root, text="1", padx = 20, pady = 5, command=lambda: buttonAddNo(1))
 button2 = tkinter.Button(root, text="2", padx = 20, pady = 5, command=lambda: buttonAddNo(2))
@@ -23,13 +78,18 @@ button7 = tkinter.Button(root, text="7", padx = 20, pady = 5, command=lambda: bu
 button8 = tkinter.Button(root, text="8", padx = 20, pady = 5, command=lambda: buttonAddNo(8))
 button9 = tkinter.Button(root, text="9", padx = 20, pady = 5, command=lambda: buttonAddNo(9))
 button0 = tkinter.Button(root, text="0", padx = 51, pady = 5, command=lambda: buttonAddNo(0))
+
+buttonC = tkinter.Button(root, text="C", padx = 20, pady = 5, command=lambda: buttonClear())
 buttonDot = tkinter.Button(root, text=".", padx = 20, pady = 5, command=lambda: buttonAddNo("."))
-buttonAdd = tkinter.Button(root, text="+", padx = 15, pady= 23, command=lambda: buttonSum)
-buttonEquals = tkinter.Button(root, text="=", padx = 15, pady= 23, command=lambda: buttonSum)
-buttonC = tkinter.Button(root, text="C", padx = 20, pady = 5, command=lambda: buttonAddNo(7))
-buttonMultiply = tkinter.Button(root, text="*", padx = 20, pady = 5, command=lambda: buttonAddNo(8))
-buttonDivide = tkinter.Button(root, text="/", padx = 20, pady = 5, command=lambda: buttonAddNo(9))
-buttonSubtract = tkinter.Button(root, text="-", padx = 20, pady = 5, command=lambda: buttonAddNo(9))
+buttonAdd = tkinter.Button(root, text="+", padx = 15, pady= 23, command=lambda: buttonSum())
+buttonDivide = tkinter.Button(root, text="/", padx = 20, pady = 5, command=lambda: buttonQuotient())
+buttonEquals = tkinter.Button(root, text="=", padx = 15, pady= 23, command=lambda: buttonCalculate())
+buttonMultiply = tkinter.Button(root, text="*", padx = 20, pady = 5, command=lambda: buttonProduct())
+
+
+buttonSubtract = tkinter.Button(root, text="-", padx = 20, pady = 5, command=lambda: buttonDifference())
+
+
 entryField.grid(row=0, column=0, columnspan=4, ipady = 15)
 
 button1.grid(row=4, column=0)
